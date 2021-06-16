@@ -1,0 +1,25 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<link rel="stylesheet" th:href="@{/css/styles.css}"/>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
+    <title>Hondentrimsalon Amber</title>
+</head>
+<body>
+
+    <div th:replace="fragments/header :: header"> Header </div>
+
+        <div>
+            <p th:text="${breed.smallSizePrice}">small</p>
+            <p th:text="${breed.mediumSizePrice}">medium</p>
+            <p th:text="${breed.bigsizeprice}">big</p>
+        </div>
+
+    <!--div th:replace="fragments/footer :: footer"> Footer </div-->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+</body>
+</html>

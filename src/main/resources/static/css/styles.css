@@ -1,0 +1,9 @@
+ul {
+    list-style-type: none;
+}
+
+.navbar {
+    background: #B49EB8;
+    padding: 20px 0;
+    min-height: 10vh;
+}
