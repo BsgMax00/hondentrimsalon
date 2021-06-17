@@ -8,6 +8,27 @@ ul {
     min-height: 10vh;
 }
 
-.home{
+.Home, .AboutUs, .Customer, .Dog, .Price{
     min-height: 100vh;
+}
+
+.previous{
+    position: absolute;
+    top: 5%;
+    left: 7%;
+}
+
+.next{
+    position: absolute;
+    top: 5%;
+    right: 7%;
+}
+
+.listcard{
+    text-decoration: none;
+}
+
+.card:hover{
+    text-decoration: none;
+    background-color: lightgray;
 }

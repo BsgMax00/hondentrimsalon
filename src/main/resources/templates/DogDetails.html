@@ -12,19 +12,32 @@
 
     <div th:replace="fragments/header :: header"> Header </div>
 
-    <div>
-        <p th:text="${dog.name}">name</p>
-        <p th:text="${dog.gender}">gender</p>
-        <p th:text="${dog.age}">age</p>
-        <p th:text="${dog.extraInfo}">extra info</p>
-        <p th:text="${dog.breed.breedName}">breed name</p>
-        <p th:text="${dog.fur.furType}">fur type</p>
-    </div>
+    <section class="Dog">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 position-relative text-center my-4">
+                    <a class="previous btn btn-outline-secondary" th:href="@{|/DogDetails/${prevIndex}|}"> previous </a>
+                    <a class="next btn btn-outline-secondary" th:href="@{|/DogDetails/${nextIndex}|}"> next </a>
 
-    <div><a th:href="@{|/DogDetails/${prevIndex}|}"> previous </a></div>
-    <div><a th:href="@{|/DogDetails/${nextIndex}|}"> next </a></div>
+                    <img src="/img/profile.jpg">
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-10">
+                    <div class="bg-light rounded-3 p-3 shadow-lg">
+                        <p th:text="|name: ${dog.name}|">name</p>
+                        <p th:text="|gender: ${dog.gender}|">gender</p>
+                        <p th:text="|age: ${dog.age}|">age</p>
+                        <p th:text="|info: ${dog.extraInfo}|">extra info</p>
+                        <p th:text="|breed: ${dog.breed.breedName}|">breed name</p>
+                        <p th:text="|fur: ${dog.fur.furType}|">fur type</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <!--div th:replace="fragments/footer :: footer"> Footer </div-->
+    <div th:replace="fragments/footer :: footer"> Footer </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>

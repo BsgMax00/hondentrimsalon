@@ -12,25 +12,41 @@
 
     <div th:replace="fragments/header :: header"> Header </div>
 
-        <div th:if="${showFilters}" method="post">
-            <form >
-                <div>
-                    <label for="Keyword"></label>
-                    <input type="text" id="Keyword" name="Keyword" th:value="${keyword}" value="">
-                </div>
-                <div>
-                    <input type="submit" value="filter">
-                </div>
-            </form>
+        <section class="Customer">
+            <div class="container">
+                <div class="row">
+                    <div th:if="${showFilters}" method="post">
+                        <form>
+                            <div class="p-1 bg-light shadow-sm">
+                                <div class="input-group">
+                                    <a class="btn btn-outline-secondary" th:href="@{/create/Customer}">create</a>
 
-            <div th:each="customer:${customers}">
-                <a th:href="@{|/CustomerDetails/${customer.id}|}">
-                    <h4 th:text="${customer.name}">name</h4>
-                </a>
+                                    <label for="Keyword"></label>
+                                    <input class="form-control border-0" type="text" id="Keyword" name="Keyword" th:value="${keyword}" placeholder="name">
+
+                                    <button class="btn btn-outline-secondary" type="submit">filter</button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <div class="row mt-5">
+                            <div class="col-lg-3 col-md-4 col-6" th:each="customer:${customers}">
+                                <div class="card mb-5 p-3">
+                                    <a class="listcard" th:href="@{|/CustomerDetails/${customer.id}|}">
+                                        <img src="/img/profile.jpg" class="card-img-top">
+                                        <div class="card-body">
+                                            <h4 class="card-title text-center" th:text="${customer.name}">name</h4>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
 
-    <!--div th:replace="fragments/footer :: footer"> Footer </div-->
+    <div th:replace="fragments/footer :: footer"> Footer </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>

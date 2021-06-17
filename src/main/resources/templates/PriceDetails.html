@@ -12,16 +12,41 @@
 
     <div th:replace="fragments/header :: header"> Header </div>
 
-        <div>
-            <p th:text="${breed.smallSizePrice}">small</p>
-            <p th:text="${breed.mediumSizePrice}">medium</p>
-            <p th:text="${breed.bigSizePrice}">big</p>
+    <section class="Price">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 position-relative text-center my-4">
+                    <a class="previous btn btn-outline-secondary" th:href="@{|/PriceDetails/${prevIndex}|}"> previous </a>
+
+                    <h2 th:text="${breed.breedName}">name</h2>
+
+                    <a class="next btn btn-outline-secondary" th:href="@{|/PriceDetails/${nextIndex}|}"> next </a>
+                </div>
+                <div class="row mt-5">
+                    <div class="col-lg-4 col-12">
+                        <div class="card mb-5 p-3">
+                            <p class="card-title">short haired</p>
+                            <p class="card-body" th:text="${breed.smallSizePrice}">small</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-12">
+                        <div class="card mb-5 p-3">
+                            <p class="card-title">medium long hair</p>
+                            <p class="card-body" th:text="${breed.mediumSizePrice}">medium</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-12">
+                        <div class="card mb-5 p-3">
+                            <p class="card-title">long hair</p>
+                            <p class="card-body" th:text="${breed.bigSizePrice}">big</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 
-    <div><a th:href="@{|/PriceDetails/${prevIndex}|}"> previous </a></div>
-    <div><a th:href="@{|/PriceDetails/${nextIndex}|}"> next </a></div>
-
-    <!--div th:replace="fragments/footer :: footer"> Footer </div-->
+    <div th:replace="fragments/footer :: footer"> Footer </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>

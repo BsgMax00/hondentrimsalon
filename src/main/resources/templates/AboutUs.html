@@ -12,17 +12,31 @@
 
     <div th:replace="fragments/header :: header"> Header </div>
 
-    <h1>employees</h1>
+    <section class="AboutUs d-flex">
+        <div class="container">
+            <div class="row mt-5">
+                <div class="col-12">
+                    <h2 class="py-3 text-center bg-light">employees</h2>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-3 col-6 p-3 text-center" th:each="employee:${employees}">
+                            <h4 th:text="${employee.name}">name</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    <div th:each="employee:${employees}">
-        <h4 th:text="${employee.name}">name</h4>
-    </div>
-
-    <h1>products</h1>
-
-    <div th:each="product:${products}">
-        <h4 th:text="${product.productName}">name</h4>
-    </div>
+            <div class="row mt-5">
+                <div class="col-12">
+                    <h2 class="py-3 text-center bg-light">products</h2>
+                    <hr>
+                    <div class="col-md-3 col-6 p-3 text-center" th:each="product:${products}">
+                        <h4 th:text="${product.productName}">name</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!--div th:replace="fragments/footer :: footer"> Footer </div-->
 

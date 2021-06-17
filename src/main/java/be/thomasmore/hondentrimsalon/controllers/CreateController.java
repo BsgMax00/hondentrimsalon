@@ -92,7 +92,7 @@ public class CreateController {
 
         dogRepository.save(dog);
 
-        return "redirect:/DogList";
+        return "redirect:/DogList/filter";
     }
 
     //Product creation

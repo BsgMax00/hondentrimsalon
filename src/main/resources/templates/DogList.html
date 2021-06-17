@@ -12,13 +12,51 @@
 
     <div th:replace="fragments/header :: header">Header</div>
 
-    <div th:each="dog:${dogs}">
-        <a th:href="@{|/DogDetails/${dog.id}|}">
-            <h4 th:text="${dog.name}">name</h4>
-        </a>
-    </div>
+    <section class="Dog">
+        <div class="container">
+            <form>
+                <div class="p-1 bg-light shadow-sm">
+                    <div class="input-group mb-3">
+                        <a class="btn btn-outline-secondary" th:href="@{/create/Dog}">create</a>
 
-    <!--div th:replace="fragments/footer :: footer"> Footer </div-->
+                        <label for="keyword"></label>
+                        <input class="form-control border-0" type="text" id="keyword" name="keyword" th:value="${keyword}" placeholder="name">
+
+                        <label for="age"></label>
+                        <input class="form-control border-0" type="text" id="age" name="age" th:value="${age}" placeholder="age">
+
+                        <button class="btn btn-outline-secondary" type="submit">filter</button>
+                    </div>
+                    <div class="input-group">
+                        <label for="breedfilter"></label>
+                        <select class="form-select" name="breedfilter" id="breedfilter">
+                            <option th:each="breed:${breeds}" th:value="${breed.id}" th:text="${breed.breedName}" th:selected="DogBreed == ${breed.breedName}"></option>
+                        </select>
+
+                        <label for="furfilter"></label>
+                        <select class="form-select" name="furfilter" id="furfilter">
+                            <option th:each="fur:${furs}" th:value="${fur.id}" th:text="${fur.furType}" th:selected="DogFur == ${fur.furType}"></option>
+                        </select>
+                    </div>
+                </div>
+            </form>
+            <div class="row mt-5">
+                <div class="col-lg-3 col-md-4 col-6" th:each="dog:${dogs}">
+                    <div class="card mb-5 p-3">
+                        <a class="listcard" th:href="@{|/DogDetails/${dog.id}|}">
+                            <img src="/img/profile.jpg" class="card-img-top">
+                            <div class="card-body">
+                                <h4 th:text="${dog.name}">name</h4>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <div th:replace="fragments/footer :: footer"> Footer </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>

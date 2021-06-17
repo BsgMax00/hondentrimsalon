@@ -12,23 +12,42 @@
 
     <div th:replace="fragments/header :: header"> Header </div>
 
-        <div>
-            <p th:text="${customer.name}">name</p>
-            <p th:text="${customer.phoneNumber}">phone number</p>
-            <p th:text="${customer.email}">email</p>
-            <p th:text="${customer.regio}">regio</p>
+        <section class="Customer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 position-relative text-center my-4">
+                        <a class="previous btn btn-outline-secondary" th:href="@{|/CustomerDetails/${prevIndex}|}"> previous </a>
+                        <a class="next btn btn-outline-secondary" th:href="@{|/CustomerDetails/${nextIndex}|}"> next </a>
 
-            <div th:if="${customer.dog} != null">
-                <a th:href="@{|/DogDetails/${customer.dog.id}|}">
-                    <p th:text="${customer.dog.name}">name</p>
-                </a>
+                        <img src="/img/profile.jpg">
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-10">
+                        <div class="bg-light rounded-3 p-3 shadow-lg">
+                            <p th:text="|name: ${customer.name}|">name</p>
+                            <p th:text="|phone number: ${customer.phoneNumber}|">phone number</p>
+                            <p th:text="|e-mail: ${customer.email}|">email</p>
+                            <p th:text="|regio: ${customer.regio}|">regio</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-5 justify-content-center"  th:if="${customer.dog} != null">
+                    <div class="col-lg-3 col-md-4 col-6">
+                        <div class="card mb-5 p-3">
+                            <a th:href="@{|/DogDetails/${customer.dog.id}|}">
+                                <img src="/img/profile.jpg" class="card-img-top">
+                                <div class="card-body">
+                                    <h4 class="card-title text-center" th:text="${customer.dog.name}">name</h4>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </section>
 
-            <div><a th:href="@{|/CustomerDetails/${prevIndex}|}"> previous </a></div>
-            <div><a th:href="@{|/CustomerDetails/${nextIndex}|}"> next </a></div>
-        </div>
-
-    <!--div th:replace="fragments/footer :: footer"> Footer </div-->
+    <div th:replace="fragments/footer :: footer"> Footer </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
