@@ -11,13 +11,37 @@
 
     <div th:replace="fragments/header :: header"> Header </div>
 
-        <div th:object="${customer}">
-            <form th:action="@{|/create/Customer|}" method="post">
-                <label for="CustomerName">name</label>
-                <input id="CustomerName" name="CustomerName" placeholder="name">
+        <div th:object="${dog}">
+            <form th:action="@{|/create/Dog|}" method="post">
+                <label for="DogName">name</label>
+                <input id="DogName" name="DogName" placeholder="name">
 
-                <label for="CustomerPhoneNumber">phone number</label>
-                <input id="CustomerPhoneNumber" name="CustomerPhoneNumber" placeholder="phone number">
+                <label for="DogGender">phone number</label>
+                <input id="DogGender" name="DogGender" placeholder="gender">
+
+                <label for="DogInfo">Info</label>
+                <input id="DogInfo" name="DogInfo" placeholder="info">
+
+                <label for="DogBreed">Breed</label>
+                <select name="DogBreed" id="DogBreed">
+                    <option th:each="breed:${breeds}" th:value="${breed.id}" th:text="${breed.breedName}"
+                            th:selected="DogBreed == ${breed.id}">breed name
+                    </option>
+                </select>
+
+                <label for="DogFur">Breed</label>
+                <select name="DogFur" id="DogFur">
+                    <option th:each="fur:${furs}" th:value="${fur.id}" th:text="${fur.id}"
+                            th:selected="DogFur == ${fur.id}">fur name
+                    </option>
+                </select>
+
+                <label for="DogCustomer">Customer</label>
+                    <select name="DogCustomer" id="DogCustomer">
+                        <option th:each="customer:${customers}" th:value="${customer.id}" th:text="${customer.id}"
+                                th:selected="DogCustomer == ${customer.id}">customer
+                        </option>
+                    </select>
 
                 <input type="submit" value="new Customer">
             </form>

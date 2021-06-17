@@ -12,8 +12,8 @@ public class Customer {
     private String name;
     private String PhoneNumber;
 
-    @ManyToMany
-    private Collection<Dog> dogs;
+    @OneToOne
+    private Dog dog;
 
     public Customer() {
     }
@@ -42,11 +42,11 @@ public class Customer {
         PhoneNumber = phoneNumber;
     }
 
-    public Collection<Dog> getDogs() {
-        return dogs;
+    public Dog getDog() {
+        return dog;
     }
 
-    public void setDogs(Collection<Dog> dogs) {
-        this.dogs = dogs;
+    public void setDog(Dog dog) {
+        this.dog = dog;
     }
 }

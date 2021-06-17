@@ -1,6 +1,7 @@
 package be.thomasmore.hondentrimsalon.model;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 public class Dog {
@@ -17,6 +18,9 @@ public class Dog {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private Fur fur;
+
+    @OneToOne
+    private Customer customer;
 
     public Dog() {
     }
@@ -67,5 +71,13 @@ public class Dog {
 
     public void setFur(Fur fur) {
         this.fur = fur;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 }

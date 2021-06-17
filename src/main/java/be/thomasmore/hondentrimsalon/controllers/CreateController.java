@@ -1,10 +1,7 @@
 package be.thomasmore.hondentrimsalon.controllers;
 
 import be.thomasmore.hondentrimsalon.model.*;
-import be.thomasmore.hondentrimsalon.repositories.BreedRepository;
-import be.thomasmore.hondentrimsalon.repositories.CustomerRepository;
-import be.thomasmore.hondentrimsalon.repositories.DogRepository;
-import be.thomasmore.hondentrimsalon.repositories.ProductRepository;
+import be.thomasmore.hondentrimsalon.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,37 +31,58 @@ public class CreateController {
 
         customer.setName(CustomerName);
         customer.setPhoneNumber(CustomerPhoneNumber);
+        customer.setDog(null);
 
         customerRepository.save(customer);
 
-        return "redirect:/CustomerList";
+        return "redirect:/create/Dog";
     }
 
     //Dog creation
     @Autowired
     private DogRepository dogRepository;
 
+    @Autowired
+    private BreedRepository breedRepository;
+
+    @Autowired
+    private FurRepository furRepository;
+
     @GetMapping("/create/Dog")
     public String Dog(Model model){
 
         Dog dog = new Dog();
+        Iterable<Breed> breeds = breedRepository.findAll();
+        Iterable<Fur> furs = furRepository.findAll();
+        Iterable<Customer> customers = customerRepository.findAll();
+
         model.addAttribute("dog", dog);
+        model.addAttribute("breeds", breeds);
+        model.addAttribute("furs", furs);
+        model.addAttribute("customers", customers);
 
         return "/create/Dog";
     }
 
     @PostMapping("/create/Dog")
     public String DogPost(Model model,
-                          @RequestParam String Name,
-                          @RequestParam String Gender,
-                          @RequestParam String ExtraInfo,
-                          @RequestParam Breed Breed,
-                          @RequestParam Fur Fur){
+                          @RequestParam String DogName,
+                          @RequestParam String DogGender,
+                          @RequestParam String DogInfo,
+                          @RequestParam Breed DogBreed,
+                          @RequestParam Fur DogFur,
+                          @RequestParam Customer DogCustomer){
 
         Dog dog = new Dog();
-        dog.setName(Name);
-        dog.setGender(Gender);
-        dog.setExtraInfo(ExtraInfo);
+        Customer customer = customerRepository.findById(DogCustomer.getId()).get();
+
+        dog.setName(DogName);
+        dog.setGender(DogGender);
+        dog.setExtraInfo(DogInfo);
+        dog.setBreed(DogBreed);
+        dog.setFur(DogFur);
+        dog.setCustomer(DogCustomer);
+        customer.setDog(dog);
 
         dogRepository.save(dog);
 

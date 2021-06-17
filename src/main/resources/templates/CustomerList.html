@@ -11,11 +11,23 @@
 
     <div th:replace="fragments/header :: header"> Header </div>
 
-    <div th:each="customer:${customers}">
-        <a th:href="@{|CustomerDetails/${customer.id}|}">
-            <h4 th:text="${customer.name}">name</h4>
-        </a>
-    </div>
+        <div th:if="${showFilters}" method="post">
+            <form >
+                <div>
+                    <label for="Keyword"></label>
+                    <input type="text" id="Keyword" name="Keyword" th:value="${keyword}" value="">
+                </div>
+                <div>
+                    <input type="submit" value="filter">
+                </div>
+            </form>
+
+            <div th:each="customer:${customers}">
+                <a th:href="@{|/CustomerDetails/${customer.id}|}">
+                    <h4 th:text="${customer.name}">name</h4>
+                </a>
+            </div>
+        </div>
 
     <!--div th:replace="fragments/footer :: footer"> Footer </div-->
 

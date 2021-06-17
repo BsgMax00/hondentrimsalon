@@ -1,10 +1,7 @@
 package be.thomasmore.hondentrimsalon.controllers;
 
-import be.thomasmore.hondentrimsalon.model.Customer;
-import be.thomasmore.hondentrimsalon.model.Product;
-import be.thomasmore.hondentrimsalon.repositories.BreedRepository;
-import be.thomasmore.hondentrimsalon.repositories.CustomerRepository;
-import be.thomasmore.hondentrimsalon.repositories.ProductRepository;
+import be.thomasmore.hondentrimsalon.model.*;
+import be.thomasmore.hondentrimsalon.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -42,6 +39,51 @@ public class EditController {
         return "redirect:/CustomerList";
     }
 
+    //Dog edit
+    @Autowired
+    private DogRepository dogRepository;
+
+    @Autowired
+    private BreedRepository breedRepository;
+
+    @Autowired
+    private FurRepository furRepository;
+
+    @GetMapping("/edit/Dog/{id}")
+    public String Dog(Model model, @PathVariable(required = false) Integer id){
+
+        Dog dog = dogRepository.findById(id).get();
+        Iterable<Breed> breeds = breedRepository.findAll();
+        Iterable<Fur> furs = furRepository.findAll();
+
+        model.addAttribute("dog", dog);
+        model.addAttribute("breeds", breeds);
+        model.addAttribute("furs", furs);
+
+        return "/edit/Dog";
+    }
+
+    @PostMapping("/edit/Dog/{id}")
+    public String DogPost(Model model,
+                          @PathVariable(required = false) Integer id,
+                          @RequestParam String DogName,
+                          @RequestParam String DogGender,
+                          @RequestParam String DogInfo,
+                          @RequestParam Breed DogBreed,
+                          @RequestParam Fur DogFur){
+
+        Dog dog = dogRepository.findById(id).get();
+
+        dog.setName(DogName);
+        dog.setGender(DogGender);
+        dog.setExtraInfo(DogInfo);
+        dog.setBreed(DogBreed);
+        dog.setFur(DogFur);
+
+        dogRepository.save(dog);
+
+        return "redirect:/DogList";
+    }
 
     //Product edit
     @Autowired

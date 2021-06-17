@@ -11,18 +11,14 @@
 
     <div th:replace="fragments/header :: header"> Header </div>
 
-    <div>
-        <p th:text="${customer.name}">name</p>
-        <p th:text="${customer.phoneNumber}">phone number</p>
-    </div>
+        <div>
+            <p th:text="${customer.name}">name</p>
+            <p th:text="${customer.phoneNumber}">phone number</p>
 
-    <div>
-        <div th:each="dog:${customer.dogs}">
-            <a th:href="@{|/DogDetails/${dog.id}|}">
-                <p th:text="${dog.name}">name</p>
+            <a th:href="@{|/DogDetails/${customer.dog.id}|}">
+                <p th:text="${customer.dog.name}">name</p>
             </a>
         </div>
-    </div>
 
     <!--div th:replace="fragments/footer :: footer"> Footer </div-->
 
