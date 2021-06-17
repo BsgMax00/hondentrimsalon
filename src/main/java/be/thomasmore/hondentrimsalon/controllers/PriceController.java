@@ -29,8 +29,31 @@ public class PriceController {
     public String PriceDetails(Model model, @PathVariable(required = false) Integer id){
 
         Breed breed = breedRepository.findById(id).get();
+        long longId = breedRepository.count();
+        int lastId = (int) longId;
+
+        model.addAttribute("prevIndex", prevIndex(id, lastId));
+        model.addAttribute("nextIndex", nextIndex(id, lastId));
         model.addAttribute("breed", breed);
 
         return "PriceDetails";
+    }
+
+    public int prevIndex(int currentindex, int lastID) {
+        if (currentindex == 1) {
+            currentindex = lastID;
+        } else {
+            currentindex -= 1;
+        }
+        return currentindex;
+    }
+
+    public int nextIndex(int currentindex, int lastId) {
+        if (currentindex == lastId) {
+            currentindex = 1;
+        } else {
+            currentindex += 1;
+        }
+        return currentindex;
     }
 }

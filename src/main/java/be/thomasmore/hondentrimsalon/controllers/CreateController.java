@@ -25,13 +25,17 @@ public class CreateController {
     @PostMapping("/create/Customer")
     public String CustomerPost(Model model,
                                @RequestParam String CustomerName,
-                               @RequestParam String CustomerPhoneNumber){
+                               @RequestParam String CustomerPhoneNumber,
+                               @RequestParam String CustomerEmail,
+                               @RequestParam String CustomerRegio){
 
         Customer customer = new Customer();
 
         customer.setName(CustomerName);
         customer.setPhoneNumber(CustomerPhoneNumber);
         customer.setDog(null);
+        customer.setEmail(CustomerEmail);
+        customer.setRegio(CustomerRegio);
 
         customerRepository.save(customer);
 
@@ -68,6 +72,7 @@ public class CreateController {
     public String DogPost(Model model,
                           @RequestParam String DogName,
                           @RequestParam String DogGender,
+                          @RequestParam String DogAge,
                           @RequestParam String DogInfo,
                           @RequestParam Breed DogBreed,
                           @RequestParam Fur DogFur,
@@ -78,6 +83,7 @@ public class CreateController {
 
         dog.setName(DogName);
         dog.setGender(DogGender);
+        dog.setAge(DogAge);
         dog.setExtraInfo(DogInfo);
         dog.setBreed(DogBreed);
         dog.setFur(DogFur);

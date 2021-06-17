@@ -40,8 +40,31 @@ public class CustomerController {
                                   @PathVariable(required = false) Integer id){
 
         Customer customer = customerRepository.findById(id).get();
+        long longId = customerRepository.count();
+        int lastId = (int) longId;
+
         model.addAttribute("customer", customer);
+        model.addAttribute("prevIndex", prevIndex(id, lastId));
+        model.addAttribute("nextIndex", nextIndex(id, lastId));
 
         return "CustomerDetails";
+    }
+
+    public int prevIndex(int currentindex, int lastID) {
+        if (currentindex == 1) {
+            currentindex = lastID;
+        } else {
+            currentindex -= 1;
+        }
+        return currentindex;
+    }
+
+    public int nextIndex(int currentindex, int lastId) {
+        if (currentindex == lastId) {
+            currentindex = 1;
+        } else {
+            currentindex += 1;
+        }
+        return currentindex;
     }
 }

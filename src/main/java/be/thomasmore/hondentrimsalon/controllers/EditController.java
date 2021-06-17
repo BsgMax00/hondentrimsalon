@@ -27,12 +27,16 @@ public class EditController {
     public String CustomerPost(Model model,
                                @PathVariable(required = false) Integer id,
                                @RequestParam String CustomerName,
-                               @RequestParam String CustomerPhoneNumber){
+                               @RequestParam String CustomerPhoneNumber,
+                               @RequestParam String CustomerEmail,
+                               @RequestParam String CustomerRegio){
 
         Customer customer = customerRepository.findById(id).get();
 
         customer.setName(CustomerName);
         customer.setPhoneNumber(CustomerPhoneNumber);
+        customer.setEmail(CustomerEmail);
+        customer.setRegio(CustomerRegio);
 
         customerRepository.save(customer);
 
@@ -68,6 +72,7 @@ public class EditController {
                           @PathVariable(required = false) Integer id,
                           @RequestParam String DogName,
                           @RequestParam String DogGender,
+                          @RequestParam String DogAge,
                           @RequestParam String DogInfo,
                           @RequestParam Breed DogBreed,
                           @RequestParam Fur DogFur){
@@ -76,6 +81,7 @@ public class EditController {
 
         dog.setName(DogName);
         dog.setGender(DogGender);
+        dog.setAge(DogAge);
         dog.setExtraInfo(DogInfo);
         dog.setBreed(DogBreed);
         dog.setFur(DogFur);

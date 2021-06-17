@@ -2,6 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+<link rel="stylesheet" th:href="@{/css/bootstrap.css}">
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
@@ -19,6 +20,12 @@
                 <label for="CustomerPhoneNumber">phone number</label>
                 <input id="CustomerPhoneNumber" name="CustomerPhoneNumber" placeholder="phone number">
 
+                <label for="CustomerEmail">phone number</label>
+                <input id="CustomerEmail" name="CustomerEmail" placeholder="e-mail">
+
+                <label for="CustomerRegio">phone number</label>
+                <input id="CustomerRegio" name="CustomerRegio" placeholder="Regio">
+
                 <input type="submit" value="new Customer">
             </form>
         </div>
@@ -27,5 +34,6 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script th:src="@{/js/bootstrap.js}"></script>
 </body>
 </html>

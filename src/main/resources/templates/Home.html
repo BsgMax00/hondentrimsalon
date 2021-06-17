@@ -2,6 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+<link rel="stylesheet" th:href="@{/css/bootstrap.css}">
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
@@ -11,15 +12,28 @@
 
     <div th:replace="fragments/header :: header"> Header </div>
 
-        <p>Bij hondentrimsalon 'Dog styling by amber' kan u terecht voor de luxe van uw hond.
-            Hier staat kwaliteit en het welzijn van uw viervoeter op nummer één.</p>
+    <section class="home d-flex">
+        <div class="container">
+            <div class="row justify-content-start p-5">
+                <div class="col-md-6">
+                    <p>Bij hondentrimsalon 'Dog styling by amber' kan u terecht voor de luxe van uw hond.
+                        Hier staat kwaliteit en het welzijn van uw viervoeter op nummer één.</p>
+                </div>
+            </div>
 
-        <p>Honden groot en klein zijn welkom in het salon,
-            hier kijken we individueel hond op hond welke verzorging het best is voor hun.</p>
+            <div class="row justify-content-end p-5">
+                <div class="col-md-6">
+                    <p>Honden groot en klein zijn welkom in het salon,
+                        hier kijken we individueel hond op hond welke verzorging het best is voor hun.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <!--div th:replace="fragments/footer :: footer"> Footer </div-->
+    <div th:replace="fragments/footer :: footer"> Footer </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script th:src="@{/js/bootstrap.js}"></script>
 </body>
 </html>

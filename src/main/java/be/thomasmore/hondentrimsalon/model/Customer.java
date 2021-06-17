@@ -11,6 +11,8 @@ public class Customer {
     private int id;
     private String name;
     private String PhoneNumber;
+    private String Email;
+    private String Regio;
 
     @OneToOne
     private Dog dog;
@@ -48,5 +50,21 @@ public class Customer {
 
     public void setDog(Dog dog) {
         this.dog = dog;
+    }
+
+    public String getEmail() {
+        return Email;
+    }
+
+    public void setEmail(String email) {
+        Email = email;
+    }
+
+    public String getRegio() {
+        return Regio;
+    }
+
+    public void setRegio(String regio) {
+        Regio = regio;
     }
 }

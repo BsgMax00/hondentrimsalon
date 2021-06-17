@@ -1,7 +1,6 @@
 package be.thomasmore.hondentrimsalon.model;
 
 import javax.persistence.*;
-import java.util.Collection;
 
 @Entity
 public class Dog {
@@ -11,6 +10,7 @@ public class Dog {
     private int id;
     private String name;
     private String gender;
+    private String age;
     private String extraInfo;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -47,6 +47,14 @@ public class Dog {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
     }
 
     public String getExtraInfo() {

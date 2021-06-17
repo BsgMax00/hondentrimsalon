@@ -1,43 +1,41 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-<link rel="stylesheet" th:href="@{/css/styles.css}"/>
-
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
     <title>Hondentrimsalon Amber</title>
 </head>
 <body>
 
-    <nav class="navbar" th:fragment="header">
-        <div>
-            <ul>
-                <li>
-                    <a th:href="@{/}">Home</a>
+    <nav th:fragment="header">
+        <div class="row">
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/}">Home</a>
                 </li>
-                <li>
-                    <a th:href="@{/AboutUs}">about us</a>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/AboutUs}">about us</a>
                 </li>
-                <li>
-                    <a th:href="@{/DogList}">Dog list</a>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/DogList}">Dog list</a>
                 </li>
-                <li>
-                    <a th:href="@{/CustomerList/filter}">Customer list</a>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/CustomerList/filter}">Customer list</a>
                 </li>
-                <li>
-                    <a th:href="@{/create/Customer}">create customer</a>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/PriceList}">Price list</a>
                 </li>
-                <li>
-                    <a th:href="@{/create/Product}">create product</a>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/create/Customer}">create customer</a>
                 </li>
-                <li>
-                    <a th:href="@{/create/Dog}">create dog</a>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/create/Product}">create product</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/create/Dog}">create dog</a>
                 </li>
             </ul>
         </div>
     </nav>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 </body>
 </html>

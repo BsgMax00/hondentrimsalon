@@ -7,3 +7,7 @@ ul {
     padding: 20px 0;
     min-height: 10vh;
 }
+
+.home{
+    min-height: 100vh;
+}

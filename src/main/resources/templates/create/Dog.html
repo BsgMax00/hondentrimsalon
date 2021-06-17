@@ -2,6 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+<link rel="stylesheet" th:href="@{/css/bootstrap.css}">
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
@@ -17,7 +18,14 @@
                 <input id="DogName" name="DogName" placeholder="name">
 
                 <label for="DogGender">phone number</label>
-                <input id="DogGender" name="DogGender" placeholder="gender">
+                <select id="DogGender" name="DogGender">
+                    <option th:text="'Reu'" th:value="'Reu'" th:selected="DogGender == ${dog.gender}">Reu</option>
+                    <option th:text="'Teef'" th:value="'Teef'" th:selected="DogGender == ${dog.gender}">Teef</option>
+                    <option th:text="'Unknown'" th:value="'Unknown'" th:selected="DogGender == ${dog.gender}">Unknown</option>
+                </select>
+
+                <label for="DogAge">phone number</label>
+                <input id="DogAge" name="DogAge" placeholder="age">
 
                 <label for="DogInfo">Info</label>
                 <input id="DogInfo" name="DogInfo" placeholder="info">
@@ -29,16 +37,16 @@
                     </option>
                 </select>
 
-                <label for="DogFur">Breed</label>
+                <label for="DogFur">Fur</label>
                 <select name="DogFur" id="DogFur">
-                    <option th:each="fur:${furs}" th:value="${fur.id}" th:text="${fur.id}"
+                    <option th:each="fur:${furs}" th:value="${fur.id}" th:text="${fur.furType}"
                             th:selected="DogFur == ${fur.id}">fur name
                     </option>
                 </select>
 
                 <label for="DogCustomer">Customer</label>
                     <select name="DogCustomer" id="DogCustomer">
-                        <option th:each="customer:${customers}" th:value="${customer.id}" th:text="${customer.id}"
+                        <option th:each="customer:${customers}" th:value="${customer.id}" th:text="${customer.name}"
                                 th:selected="DogCustomer == ${customer.id}">customer
                         </option>
                     </select>
@@ -51,5 +59,6 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script th:src="@{/js/bootstrap.js}"></script>
 </body>
 </html>

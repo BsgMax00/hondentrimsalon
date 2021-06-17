@@ -26,9 +26,31 @@ public class DogController {
     public String DogDetails(Model model, @PathVariable(required = false) Integer id){
 
         Dog dog = dogRepository.findById(id).get();
-        model.addAttribute("dog", dog);
+        long longId = dogRepository.count();
+        int lastId = (int) longId;
 
+        model.addAttribute("dog", dog);
+        model.addAttribute("prevIndex", prevIndex(id, lastId));
+        model.addAttribute("nextIndex", nextIndex(id, lastId));
 
         return "DogDetails";
+    }
+
+    public int prevIndex(int currentindex, int lastID) {
+        if (currentindex == 1) {
+            currentindex = lastID;
+        } else {
+            currentindex -= 1;
+        }
+        return currentindex;
+    }
+
+    public int nextIndex(int currentindex, int lastId) {
+        if (currentindex == lastId) {
+            currentindex = 1;
+        } else {
+            currentindex += 1;
+        }
+        return currentindex;
     }
 }
