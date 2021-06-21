@@ -28,5 +28,15 @@ VALUES (1, 'jeffrey', 'photo', 'info');
 INSERT INTO EMPLOYEE (ID, NAME, PHOTO, INFO)
 VALUES (2, 'anton', 'photo', 'info');
 
-INSERT INTO PRODUCT (ID, PRODUCT_NAME, PRICE)
-VALUES (nextval('Product_seq'), 'shampoo', 23.00);
+INSERT INTO PRODUCT (ID, PRODUCT_NAME, PHOTO, PRICE)
+VALUES (nextval('Product_seq'), 'shampoo', 'photo', 23.00);
+INSERT INTO PRODUCT (ID, PRODUCT_NAME, PHOTO, PRICE)
+VALUES (nextval('Product_seq'), 'shampoo', 'photo', 34.00);
+INSERT INTO PRODUCT (ID, PRODUCT_NAME, PHOTO, PRICE)
+VALUES (nextval('Product_seq'), 'conditioner', 'photo', 30.00);
+INSERT INTO PRODUCT (ID, PRODUCT_NAME, PHOTO, PRICE)
+VALUES (nextval('Product_seq'), 'kam', 'photo', 24.00);
+INSERT INTO PRODUCT (ID, PRODUCT_NAME, PHOTO, PRICE)
+VALUES (nextval('Product_seq'), 'droger', 'photo', 60.00);
+INSERT INTO PRODUCT (ID, PRODUCT_NAME, PHOTO, PRICE)
+VALUES (nextval('Product_seq'), 'feun', 'photo', 75.00);

@@ -9,6 +9,7 @@ public class Product {
     @Id
     private int id;
     private String ProductName;
+    private String photo;
     private double price;
 
     public Product() {
@@ -28,6 +29,14 @@ public class Product {
 
     public void setProductName(String productName) {
         ProductName = productName;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 
     public double getPrice() {
